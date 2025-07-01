@@ -102,7 +102,61 @@
           height: 3rem;
         }
       }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to   { opacity: 0; transform: translateY(40px); }
+      }
+      @keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+      @keyframes zoomOut {
+        from { opacity: 1; transform: scale(1); }
+        to   { opacity: 0; transform: scale(0.8); }
+      }
+      @keyframes bounceIn {
+        0% { opacity: 0; transform: scale(0.3); }
+        50% { opacity: 1; transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes bounceOut {
+        0% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(0.3); }
+      }
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-60px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes slideOutLeft {
+        from { opacity: 1; transform: translateX(0); }
+        to   { opacity: 0; transform: translateX(-60px); }
+      }
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(60px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes slideOutRight {
+        from { opacity: 1; transform: translateX(0); }
+        to   { opacity: 0; transform: translateX(60px); }
+      }
+      .animate-fade-up { animation: fadeUp 0.8s cubic-bezier(.4,0,.2,1) both; }
+      .animate-fade-up-out { animation: fadeOut 0.8s cubic-bezier(.4,0,.2,1) both; }
+      .animate-zoom-in { animation: zoomIn 0.7s cubic-bezier(.4,0,.2,1) both; }
+      .animate-zoom-out { animation: zoomOut 0.7s cubic-bezier(.4,0,.2,1) both; }
+      .animate-bounce-in { animation: bounceIn 1s cubic-bezier(.4,0,.2,1) both; }
+      .animate-bounce-out { animation: bounceOut 1s cubic-bezier(.4,0,.2,1) both; }
+      .animate-slide-in-left { animation: slideInLeft 0.8s cubic-bezier(.4,0,.2,1) both; }
+      .animate-slide-out-left { animation: slideOutLeft 0.8s cubic-bezier(.4,0,.2,1) both; }
+      .animate-slide-in-right { animation: slideInRight 0.8s cubic-bezier(.4,0,.2,1) both; }
+      .animate-slide-out-right { animation: slideOutRight 0.8s cubic-bezier(.4,0,.2,1) both; }
     </style>
+    <link rel="stylesheet" href="output.css" />
   </head>
 
   <body
@@ -228,52 +282,55 @@
     <!-- Hero Section -->
     <section
       id="home"
-      class="bg-dark min-h-screen flex items-center justify-center relative overflow-hidden fade-in-on-scroll opacity-0 translate-y-8 transition-all duration-700"
+      class="bg-dark min-h-screen flex items-center justify-center relative overflow-hidden"
+      data-animate="animate-fade-up"
     >
       <div class="absolute inset-0 bg-black/20"></div>
       <div
         class="relative z-10 max-w-7xl mx-auto px-4 pt-10 mt-10 sm:px-6 lg:px-8 text-center text-white"
       >
         <div class="animate-fade-in">
-          <!-- Profile Image -->
+          <!-- Profile Image & Text -->
           <div
             class="flex flex-col md:flex-row items-center justify-center mb-8 gap-6 md:gap-20"
           >
             <!-- Right: Profile Image (บนสุดใน mobile) -->
             <div
               class="w-full flex justify-center mb-4 md:mb-0 md:w-1/2 order-1 md:order-2"
+              data-animate="animate-slide-in-right"
             >
               <div
-                class="w-32 h-32 md:w-[400px] md:h-[400px] rounded-full bg-accent backdrop-blur-sm border-4 border-white/30 flex items-center justify-center"
+                class="w-32 h-32 md:w-[400px] md:h-[400px] rounded-full bg-accent backdrop-blur-sm border-4 border-white/30 flex items-center justify-center animate-zoom-in"
               >
                 <img
                   src="images/profile.jpg"
                   alt="Rattanachart Tongkom"
-                  class="w-28 h-28 md:w-[384px] md:h-[384px] rounded-full object-cover border-4 border-white shadow-lg"
+                  class="w-28 h-28 md:w-[384px] md:h-[384px] rounded-full object-cover border-4 border-white shadow-lg animate-bounce-in"
                 />
               </div>
             </div>
             <!-- Left: Text Content -->
             <div
               class="text-center md:text-left md:w-1/2 w-full order-2 md:order-1"
+              data-animate="animate-slide-in-left"
             >
               <h1
-                class="text-2xl md:text-6xl font-bold mb-2 md:mb-4 animate-slide-up"
+                class="text-2xl md:text-6xl font-bold mb-2 md:mb-4 animate-fade-up"
               >
                 สวัสดีครับ, ผมชื่อ
               </h1>
               <h1
-                class="text-2xl text-accent md:text-5xl font-bold mb-2 md:mb-4 animate-slide-up"
+                class="text-2xl text-accent md:text-5xl font-bold mb-2 md:mb-4 animate-fade-up"
               >
                 นายรัตนชาติ ทองคำ
               </h1>
               <h2
-                class="text-lg md:text-3xl font-semibold mb-4 md:mb-6 text-blue-100 animate-slide-up"
+                class="text-lg md:text-3xl font-semibold mb-4 md:mb-6 text-blue-100 animate-fade-up"
               >
                 UX/UI Designer & Frontend Developer
               </h2>
               <div
-                class="flex flex-col sm:flex-row gap-3 md:gap-4 md:justify-start justify-center animate-slide-up"
+                class="flex flex-col sm:flex-row gap-3 md:gap-4 md:justify-start justify-center animate-fade-up"
               >
                 <a
                   href="#works"
@@ -295,13 +352,13 @@
 
       <!-- Floating Elements -->
       <div
-        class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-bounce-slow"
+        class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-bounce"
       ></div>
       <div
-        class="absolute bottom-20 right-10 w-16 h-16 bg-accent/20 rounded-full animate-pulse-slow"
+        class="absolute bottom-20 right-10 w-16 h-16 bg-accent/20 rounded-full animate-pulse"
       ></div>
       <div
-        class="absolute top-1/2 left-20 w-12 h-12 bg-blue-400/20 rounded-full animate-bounce-slow"
+        class="absolute top-1/2 left-20 w-12 h-12 bg-blue-400/20 rounded-full animate-bounce"
         style="animation-delay: 1s"
       ></div>
     </section>
@@ -309,7 +366,8 @@
     <!-- About Me Section -->
     <section
       id="about"
-      class="py-20 bg-white fade-in-on-scroll opacity-0 translate-y-8 transition-all duration-700"
+      class="py-20 bg-white"
+      data-animate="animate-fade-up"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
@@ -320,7 +378,7 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
+          <div class="space-y-6" data-animate="animate-slide-in-left">
             <h3 class="text-2xl font-semibold text-gray-800">
               <span class="inline-block align-middle mr-2 text-3xl">👨‍💻</span>
               ประสบการณ์และความเชี่ยวชาญ
@@ -357,12 +415,12 @@
             </p>
 
             <div class="grid grid-cols-2 gap-4 mt-8">
-              <div class="text-center p-4 bg-gray-50 rounded-lg hover-scale">
+              <div class="text-center p-4 bg-gray-50 rounded-lg hover-scale animate-zoom-in">
                 <div class="text-3xl mb-2">🎨</div>
                 <h4 class="font-semibold text-gray-800">UX/UI Design</h4>
                 <p class="text-sm text-gray-600">ออกแบบประสบการณ์ผู้ใช้</p>
               </div>
-              <div class="text-center p-4 bg-gray-50 rounded-lg hover-scale">
+              <div class="text-center p-4 bg-gray-50 rounded-lg hover-scale animate-zoom-in">
                 <div class="text-3xl mb-2">💻</div>
                 <h4 class="font-semibold text-gray-800">Frontend Dev</h4>
                 <p class="text-sm text-gray-600">พัฒนาเว็บแอปพลิเคชัน</p>
@@ -370,12 +428,12 @@
             </div>
           </div>
 
-          <div class="relative group">
+          <div class="relative group" data-animate="animate-slide-in-right">
             <div class="flex justify-center">
               <img
                 src="images/resume.jpg"
                 alt="Resume"
-                class="rounded-xl shadow-lg max-w-full h-auto border border-gray-200 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl cursor-pointer"
+                class="rounded-xl shadow-lg max-w-full h-auto border border-gray-200 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl cursor-pointer animate-fade-up"
               />
             </div>
           </div>
@@ -386,7 +444,8 @@
     <!-- Skills Section -->
     <section
       id="skills"
-      class="py-20 bg-dark text-white fade-in-on-scroll opacity-0 translate-y-8 transition-all duration-700"
+      class="py-20 bg-dark text-white animate-fade-up"
+      data-animate="animate-fade-up"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
@@ -401,7 +460,8 @@
         >
           <!-- HTML -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
@@ -415,7 +475,8 @@
           </div>
           <!-- CSS -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
@@ -429,7 +490,8 @@
           </div>
           <!-- PHP -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
@@ -442,7 +504,8 @@
           </div>
           <!-- Javascript -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
@@ -455,7 +518,8 @@
           </div>
           <!-- NodeJS -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
@@ -468,7 +532,8 @@
           </div>
           <!-- NuxtJS 2 -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-plain.svg"
@@ -481,7 +546,8 @@
           </div>
           <!-- VueJS -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
@@ -494,7 +560,8 @@
           </div>
           <!-- Vuetify 2 -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuetify/vuetify-original.svg"
@@ -507,7 +574,8 @@
           </div>
           <!-- Tailwind -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="images/icons/Tailwind_CSS_Logo.svg.png"
@@ -520,7 +588,8 @@
           </div>
           <!-- Bootstrap -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
@@ -533,7 +602,8 @@
           </div>
           <!-- VueBootstrap -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="images/icons/VueBootstrap.png"
@@ -551,7 +621,8 @@
         >
           <!-- Figma -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
@@ -564,7 +635,8 @@
           </div>
           <!-- Git -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
@@ -577,7 +649,8 @@
           </div>
           <!-- VSCode -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
@@ -590,7 +663,8 @@
           </div>
           <!-- Cursor -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="images/icons/cursor-ai.png"
@@ -603,7 +677,8 @@
           </div>
           <!-- Sourcetree -->
           <div
-            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer"
+            class="flex items-center gap-4 border border-amber-400 rounded-lg p-5 bg-dark transition hover:shadow-2xl hover:scale-105 hover:bg-amber-900/20 cursor-pointer animate-zoom-in"
+            data-animate="animate-zoom-in"
           >
             <img
               src="images/icons/sourcetree.svg"
@@ -621,7 +696,8 @@
     <!-- Selected Works Section -->
     <section
       id="works"
-      class="py-20 bg-white fade-in-on-scroll transition-all duration-700"
+      class="py-20 bg-white animate-fade-up"
+      data-animate="animate-fade-up"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
@@ -639,7 +715,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <!-- Project 1 -->
           <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale"
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale animate-fade-up"
+            data-animate="animate-fade-up"
           >
             <div
               id="carousel-works-1"
@@ -782,7 +859,8 @@
 
           <!-- Project 2 -->
           <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale"
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale animate-fade-up"
+            data-animate="animate-fade-up"
           >
             <div
               id="carousel-works-2"
@@ -925,7 +1003,8 @@
           </div>
           <!-- Project 3 -->
           <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale"
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale animate-fade-up"
+            data-animate="animate-fade-up"
           >
             <div
               id="carousel-works-3"
@@ -1055,7 +1134,8 @@
           </div>
           <!-- Project 4 -->
           <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale"
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale animate-fade-up"
+            data-animate="animate-fade-up"
           >
             <div
               id="carousel-works-4"
@@ -1201,7 +1281,8 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           <!-- Project 1 -->
           <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale"
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale animate-fade-up"
+            data-animate="animate-fade-up"
           >
             <div class="relative w-full h-64 md:h-96 overflow-hidden">
               <img
@@ -1263,7 +1344,8 @@
           </div>
           <!-- Project 2 -->
           <div
-            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale"
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale animate-fade-up"
+            data-animate="animate-fade-up"
           >
             <div class="relative w-full h-64 md:h-96 overflow-hidden">
               <img
@@ -1324,7 +1406,7 @@
 
     <!-- Footer -->
 
-    <footer id="contact" class="bg-dark text-white py-12">
+    <footer id="contact" class="bg-dark text-white py-12 animate-fade-up" data-animate="animate-fade-up">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-3 gap-8">
           <div>
@@ -1389,7 +1471,7 @@
     <!-- Back to Top Button -->
     <button
       id="backToTop"
-      class="fixed bottom-8 right-8 w-12 h-12 bg-amber-400 hover:bg-amber-600 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 z-40"
+      class="fixed bottom-8 right-8 w-12 h-12 bg-amber-400 hover:bg-amber-600 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 z-40 animate-bounce"
       aria-label="กลับขึ้นด้านบน"
     >
       <svg
@@ -1555,6 +1637,25 @@
         fadeEls.forEach((el) => {
           fadeObserver.observe(el);
         });
+      });
+
+      // Animate on scroll (in/out)
+      document.addEventListener("DOMContentLoaded", function () {
+        const animatedEls = document.querySelectorAll('[data-animate]');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const el = entry.target;
+            const type = el.getAttribute('data-animate');
+            if (entry.isIntersecting) {
+              el.classList.remove(type+"-out");
+              el.classList.add(type);
+            } else {
+              el.classList.remove(type);
+              el.classList.add(type+"-out");
+            }
+          });
+        }, { threshold: 0.15 });
+        animatedEls.forEach((el) => observer.observe(el));
       });
     </script>
   </body>
